@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fahrradverleih</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <section id="shopmenu" aria-label="Fahrradverleih" hidden>
+  <main class="rental" aria-label="Fahrräder">
+    <article class="bike bike--bmx">
+      <img class="bike__image" src="assets/bmx.png" alt="Schwarzes BMX-Fahrrad" width="217" height="122">
+      <h2 class="bike__name">BMX</h2>
+      <p class="bike__price">$10</p>
+      <button class="bike__rent" type="button" data-bike="bmx" data-name="BMX" data-price="10" aria-label="BMX für 10 Dollar mieten">RENT</button>
+    </article>
+    <article class="bike bike--scorcher">
+      <img class="bike__image" src="assets/scorcher.png" alt="Gelbes Scorcher-Mountainbike" width="217" height="122">
+      <h2 class="bike__name">SCORCHER</h2>
+      <p class="bike__price">$20</p>
+      <button class="bike__rent" type="button" data-bike="scorcher" data-name="SCORCHER" data-price="20" aria-label="Scorcher für 20 Dollar mieten">RENT</button>
+    </article>
+    <article class="bike bike--tribike">
+      <img class="bike__image" src="assets/tribike.png" alt="Blau-weißes Tribike-Rennrad" width="217" height="122">
+      <h2 class="bike__name">Tribike</h2>
+      <p class="bike__price">$25</p>
+      <button class="bike__rent" type="button" data-bike="tribike" data-name="Tribike" data-price="25" aria-label="Tribike für 25 Dollar mieten">RENT</button>
+    </article>
+    <article class="bike bike--cruiser">
+      <img class="bike__image" src="assets/cruiser.png" alt="Rotes Cruiser-Fahrrad" width="217" height="122">
+      <h2 class="bike__name">Cruiser</h2>
+      <p class="bike__price">$5</p>
+      <button class="bike__rent" type="button" data-bike="cruiser" data-name="Cruiser" data-price="5" aria-label="Cruiser für 5 Dollar mieten">RENT</button>
+    </article>
+  </main>
+  <p class="selection" role="status" aria-live="polite"></p>
+  </section>
+</body>
+</html>

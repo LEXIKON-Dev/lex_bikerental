@@ -1,0 +1,76 @@
+@font-face { font-family: "Fredoka One"; src: url("assets/fredoka-one.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Mona Sans"; src: url("assets/mona-sans-bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Paytone One"; src: url("assets/paytone-one.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+
+:root { --card: #0c0808; --rent: #32bd00; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; color: white; }
+[hidden] { display: none !important; }
+/* Figma 17:64: reference viewport 1918 x 1077; first card at (51,166).
+   The screenshot is a placement reference only: the page background stays transparent.
+   Uniform scaling preserves all four cards without scrolling. */
+#shopmenu { --design-unit: min(0.052137643vw, 0.092850511vh); position: fixed; top: 15.413185vh; left: 2.659020vw; width: calc(522 * var(--design-unit)); container-type: inline-size; overflow: clip; }
+/* Subtle depth angle, without rotating the panel in the screen plane. */
+#shopmenu {
+  --menu-perspective: calc(1600 * var(--design-unit));
+  --menu-angle: 12deg;
+  transform-origin: left center;
+  transform: perspective(var(--menu-perspective)) rotateY(var(--menu-angle));
+}
+#shopmenu:not([hidden]) {
+  animation: menu-fly-in 520ms cubic-bezier(.16, 1, .3, 1) both;
+}
+@keyframes menu-fly-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-100% - 10vw)) perspective(var(--menu-perspective)) rotateY(var(--menu-angle));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) perspective(var(--menu-perspective)) rotateY(var(--menu-angle));
+  }
+}
+#shopmenu.is-closing:not([hidden]) {
+  pointer-events: none;
+  animation: menu-fly-out 300ms cubic-bezier(.4, 0, 1, 1) both;
+}
+@keyframes menu-fly-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) perspective(var(--menu-perspective)) rotateY(var(--menu-angle));
+  }
+  to {
+    opacity: 0;
+    transform: translateX(calc(-100% - 10vw)) perspective(var(--menu-perspective)) rotateY(var(--menu-angle));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #shopmenu:not([hidden]) { animation: none; }
+  #shopmenu.is-closing:not([hidden]) { animation: none; }
+}
+.selection:empty { display: none; }
+.bike__rent:disabled { opacity: .6; cursor: wait; }
+/* The original Figma frame is 522px wide. Container units scale every
+   measurement together on smaller screens and when embedded in a panel. */
+.rental { width: 100%; container-type: inline-size; }
+.bike { position: relative; width: 100%; aspect-ratio: 522 / 144; background: var(--card); border-radius: 2.3cqw; box-shadow: inset 0 0 0 1px #ffffff08; }
+.bike + .bike { margin-top: 1.532567cqw; }
+.bike--tribike { margin-top: 1.340996cqw !important; }
+.bike--cruiser { margin-top: 2.10728cqw !important; }
+.bike__image { position: absolute; left: 2.298851cqw; top: 2.10728cqw; width: 41.570881cqw; height: 23.371648cqw; border-radius: 4.40613cqw; object-fit: cover; }
+.bike__name { position: absolute; left: 45.977011cqw; top: 2.10728cqw; margin: 0; font: 400 7.662835cqw / normal "Fredoka One", sans-serif; white-space: nowrap; }
+.bike__price { position: absolute; right: 1.340996cqw; top: .574713cqw; margin: 0; font: 700 7.662835cqw / normal "Mona Sans", sans-serif; }
+.bike__rent { position: absolute; left: 51.532567cqw; top: 18.390805cqw; width: 36.206897cqw; height: 7.088123cqw; border: 0; border-radius: 4.214559cqw; padding: 0; background: var(--rent); color: white; cursor: pointer; font: 400 4.597701cqw / 1 "Paytone One", sans-serif; }
+.bike__rent:hover { filter: brightness(1.12); }
+.bike__rent:active { filter: brightness(.9); }
+.bike__rent:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+.bike--scorcher .bike__image, .bike--scorcher .bike__name { top: 2.490421cqw; }
+.bike--scorcher .bike__name { left: 45.402299cqw; font-size: 6.896552cqw; }
+.bike--scorcher .bike__price { top: 1.340996cqw; }
+.bike--scorcher .bike__rent { top: 18.773946cqw; }
+.bike--tribike .bike__image, .bike--tribike .bike__name,
+.bike--cruiser .bike__image, .bike--cruiser .bike__name { top: 1.532567cqw; }
+.bike--tribike .bike__name { font-family: "Mona Sans", sans-serif; font-weight: 700; }
+.bike--tribike .bike__price, .bike--cruiser .bike__price { top: 0; }
+.bike--tribike .bike__rent, .bike--cruiser .bike__rent { top: 17.816092cqw; }
+.selection { margin: 1.5cqw 0 0; color: white; font: 700 2.3cqw/1.4 "Mona Sans", sans-serif; text-shadow: 0 1px 3px black; overflow-wrap: anywhere; }
