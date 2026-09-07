@@ -8,7 +8,7 @@
 
 ```cfg
 ensure es_extended
-ensure figma_bikerental
+ensure lex_bikerental
 ```
 
 4. In `config.lua` den Standort und den freien Fahrrad-Ausgabepunkt anpassen.
