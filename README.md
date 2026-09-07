@@ -2,7 +2,7 @@
 
 ## Installation
 
-1. Den Ordner `figma_bikerental` nach `resources/[local]/` kopieren.
+1. Den Ordner `lex_bikerental` nach `resources/` kopieren.
 2. OneSync aktivieren. Als einzige zusätzliche Ressource wird ESX Legacy (`es_extended`) benötigt.
 3. Danach in `server.cfg` eintragen:
 
